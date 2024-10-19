@@ -58,7 +58,6 @@ fn main() -> Result<(), String> {
         .load(I64, cranelift::codegen::ir::MemFlags::trusted(), tmp, 0);
     builder.def_var(x, tmp);
 
-    // First value used in the JIT logic
     let tmp = builder.ins().iconst(I64, operands[0]);
     builder.def_var(y, tmp);
 
@@ -75,7 +74,7 @@ fn main() -> Result<(), String> {
     println!("{}", codegen_ctx.func.display());
 
     let func = module
-        .declare_function("adder", Linkage::Export, &codegen_ctx.func.signature)
+        .declare_function("main", Linkage::Export, &codegen_ctx.func.signature)
         .map_err(|e| format!("failed to declare function: {e}"))?;
     module
         .define_function(func, &mut codegen_ctx)
