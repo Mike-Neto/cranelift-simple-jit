@@ -4,4 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cranelift = { version = "0.112.2", features = ["jit", "module", "native"] }
+cranelift = { version = "0.112.2", features = [
+    "frontend",
+    "jit",
+    "module",
+    "native",
+], default-features = false }
