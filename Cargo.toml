@@ -6,7 +6,8 @@ edition = "2021"
 [dependencies]
 cranelift = { version = "0.112.2", features = [
     "frontend",
-    "jit",
+    "jit",      # Only for jit example
     "module",
     "native",
+    "object",   # Only for compile example
 ], default-features = false }
